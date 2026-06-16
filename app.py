@@ -198,11 +198,11 @@ def calculate_score():
 
     # movement (40)
 
-    if movement_count <= 10:
+    if movement_count <= 50:
         score += 40
-    elif movement_count <= 20:
+    elif movement_count <= 100:
         score += 30
-    elif movement_count <= 40:
+    elif movement_count <= 200:
         score += 20
     else:
         score += 10
