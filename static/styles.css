@@ -1,0 +1,249 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    background:#0f172a;
+
+    color:white;
+
+    min-height:100vh;
+
+    padding:15px;
+}
+
+.container{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+}
+
+h1{
+
+    text-align:center;
+
+    margin-bottom:20px;
+}
+
+.status-banner{
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    background:#1e293b;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+}
+
+.sensor-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                180px,
+                1fr
+            )
+        );
+
+    gap:15px;
+
+    margin-bottom:20px;
+}
+
+.sensor-card{
+
+    background:#1e293b;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:
+        0 4px 12px
+        rgba(
+            0,
+            0,
+            0,
+            0.3
+        );
+}
+
+.sensor-value{
+
+    font-size:
+        clamp(
+            28px,
+            6vw,
+            42px
+        );
+
+    font-weight:bold;
+}
+
+.sensor-label{
+
+    margin-top:10px;
+
+    color:#cbd5e1;
+}
+
+.card{
+
+    background:#1e293b;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:
+        0 4px 12px
+        rgba(
+            0,
+            0,
+            0,
+            0.3
+        );
+}
+
+.card h2{
+
+    margin-bottom:15px;
+}
+
+input[type="time"]{
+
+    width:100%;
+
+    padding:15px;
+
+    font-size:18px;
+
+    border:none;
+
+    border-radius:12px;
+
+    margin-bottom:10px;
+}
+
+button{
+
+    width:100%;
+
+    min-height:50px;
+
+    border:none;
+
+    border-radius:12px;
+
+    margin-top:10px;
+
+    font-size:18px;
+
+    cursor:pointer;
+}
+
+.start-btn{
+
+    background:#22c55e;
+
+    color:white;
+}
+
+.stop-btn{
+
+    background:#ef4444;
+
+    color:white;
+}
+
+button:hover{
+
+    opacity:0.9;
+}
+
+.score-card{
+
+    text-align:center;
+}
+
+.score-value{
+
+    font-size:
+        clamp(
+            48px,
+            12vw,
+            80px
+        );
+
+    font-weight:bold;
+
+    margin:15px 0;
+}
+
+.score-text{
+
+    font-size:22px;
+
+    margin-bottom:20px;
+}
+
+.score-card p{
+
+    margin-top:10px;
+
+    font-size:18px;
+}
+
+hr{
+
+    margin:20px 0;
+
+    border:none;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.2
+        );
+}
+
+@media (
+    max-width:480px
+){
+
+    body{
+        padding:10px;
+    }
+
+    .sensor-grid{
+
+        grid-template-columns:1fr;
+    }
+}

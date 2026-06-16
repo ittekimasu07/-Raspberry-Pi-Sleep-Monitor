@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>スマート睡眠モニター</title>
+
+    <link rel="stylesheet" href="/sleep_monitor/static/styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>スマート睡眠モニター</h1>
+
+    <div class="status-banner" id="status_banner">
+        準備ができて
+    </div>
+
+    <div class="sensor-grid">
+
+        <div class="sensor-card">
+
+            <div class="sensor-value" id="temperature">
+                -
+            </div>
+
+            <div class="sensor-label">
+                温度
+            </div>
+
+        </div>
+
+        <div class="sensor-card">
+
+            <div class="sensor-value" id="light">
+                -
+            </div>
+
+            <div class="sensor-label">
+                光量
+            </div>
+
+        </div>
+
+        <div class="sensor-card">
+
+            <div class="sensor-value" id="movement">
+                -
+            </div>
+
+            <div class="sensor-label">
+                動き
+            </div>
+
+        </div>
+
+        <div class="sensor-card">
+
+            <div class="sensor-value" id="sleep_mode">
+                -
+            </div>
+
+            <div class="sensor-label">
+                状態
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>アラーム時刻</h2>
+
+        <input
+            type="time"
+            id="alarm_time"
+        >
+
+        <button
+            class="start-btn"
+            onclick="startSleep()"
+        >
+            睡眠開始
+        </button>
+
+        <button
+            class="stop-btn"
+            onclick="stopAlarm()"
+        >
+            アラーム停止
+        </button>
+
+    </div>
+
+    <div class="card score-card">
+
+        <h2>睡眠スコア</h2>
+
+        <div
+            class="score-value"
+            id="score"
+        >
+            -
+        </div>
+
+        <div
+            class="score-text"
+            id="score_text"
+        >
+            計算中...
+        </div>
+
+        <hr>
+
+        <p>
+            平均温度:
+            <span id="avg_temp">-</span>
+        </p>
+
+        <p>
+            平均光量:
+            <span id="avg_light">-</span>
+        </p>
+
+        <p>
+            移動回数:
+            <span id="report_movement">-</span>
+        </p>
+
+    </div>
+
+</div>
+
+<script src="/sleep_monitor/static/script.js"></script>
+
+</body>
+</html>
