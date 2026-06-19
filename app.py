@@ -20,23 +20,22 @@ from hardware.servo import (
 )
 from hardware.buzzer import buzzer
 
-
+from states import (
+    start, 
+    alarm_hour, 
+    alarm_minute, 
+    alarm_active, 
+    movement_count, 
+    temp_history, 
+    light_history, 
+    sleep_report, 
+    last_motion_state
+)
 
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-
-# =====================================
-# GPIO
-# =====================================
-
-# PIR_PIN = 17
-
-# SERVO_LEFT_PIN = 18
-# SERVO_RIGHT_PIN = 19
-
-# BUZZER_PIN = 16
 
 STOP_BUTTON_PIN = 26
 
@@ -44,87 +43,6 @@ stop_button = DigitalInputDevice(
     STOP_BUTTON_PIN,
     pull_up=True
 )
-
-# pir = DigitalInputDevice(PIR_PIN)
-
-# servo_left = AngularServo(
-#     SERVO_LEFT_PIN,
-#     min_angle=0,
-#     max_angle=90
-# )
-
-# servo_right = AngularServo(
-#     SERVO_RIGHT_PIN,
-#     min_angle=0,
-#     max_angle=90
-# )
-
-# buzzer = Buzzer(BUZZER_PIN)
-
-# # =====================================
-# # ADT7410
-# # =====================================
-
-# i2c = smbus.SMBus(1)
-
-# ADT_ADDRESS = 0x48
-# ADT_REGISTER = 0x00
-
-
-# def read_adt7410():
-
-#     word_data = i2c.read_word_data(
-#         ADT_ADDRESS,
-#         ADT_REGISTER
-#     )
-
-#     data = (
-#         ((word_data & 0xff00) >> 8)
-#         |
-#         ((word_data & 0xff) << 8)
-#     )
-
-#     data >>= 3
-
-#     if data & 0x1000 == 0:
-#         temperature = data * 0.0625
-#     else:
-#         temperature = (
-#             ((~data & 0x1fff) + 1)
-#             * -0.0625
-#         )
-
-#     return round(temperature, 2)
-
-# # =====================================
-# # MCP3008 (LDR)
-# # =====================================
-
-# spi = spidev.SpiDev()
-# spi.open(0, 0)
-# spi.max_speed_hz = 1350000
-
-
-# def read_adc(channel):
-
-#     adc = spi.xfer2(
-#         [1, (8 + channel) << 4, 0]
-#     )
-
-#     value = (
-#         ((adc[1] & 3) << 8)
-#         + adc[2]
-#     )
-
-#     return value
-
-
-# def read_ldr():
-#     return read_adc(0)
-
-# =====================================
-# APP
-# =====================================
 
 app = FastAPI()
 
@@ -139,53 +57,33 @@ templates = Jinja2Templates(
 )
 
 # =====================================
-# STATE
-# ====================================s=
-
-start = False
-
-alarm_hour = 7
-alarm_minute = 0
-
-alarm_active = False
-
-movement_count = 0
-
-temp_history = []
-light_history = []
-
-sleep_report = None
-
-last_motion_state = False
-
-# =====================================
 # SERVO
 # =====================================
 
-def close_curtain():
+# def close_curtain():
 
-    servo_left.angle = 90
-    servo_right.angle = 90
+#     servo_left.angle = 90
+#     servo_right.angle = 90
 
-    time.sleep(1)
+#     time.sleep(1)
 
-    servo_left.value = None
-    servo_right.value = None
+#     servo_left.value = None
+#     servo_right.value = None
 
-    print("Curtain CLOSED")
+#     print("Curtain CLOSED")
 
 
-def open_curtain():
+# def open_curtain():
 
-    servo_left.angle = 0
-    servo_right.angle = 0
+#     servo_left.angle = 0
+#     servo_right.angle = 0
 
-    time.sleep(1)
+#     time.sleep(1)
 
-    servo_left.value = None
-    servo_right.value = None
+#     servo_left.value = None
+#     servo_right.value = None
 
-    print("Curtain OPEN")
+#     print("Curtain OPEN")
 
 # =====================================
 # SCORE
