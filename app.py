@@ -15,8 +15,7 @@ from hardware.sensors import (
 from hardware.servo import (
     open_curtain,
     close_curtain,
-    servo_left,
-    servo_right
+    servo
 )
 from hardware.buzzer import buzzer
 
@@ -55,35 +54,6 @@ app.mount(
 templates = Jinja2Templates(
     directory="templates"
 )
-
-# =====================================
-# SERVO
-# =====================================
-
-# def close_curtain():
-
-#     servo_left.angle = 90
-#     servo_right.angle = 90
-
-#     time.sleep(1)
-
-#     servo_left.value = None
-#     servo_right.value = None
-
-#     print("Curtain CLOSED")
-
-
-# def open_curtain():
-
-#     servo_left.angle = 0
-#     servo_right.angle = 0
-
-#     time.sleep(1)
-
-#     servo_left.value = None
-#     servo_right.value = None
-
-#     print("Curtain OPEN")
 
 # =====================================
 # SCORE
