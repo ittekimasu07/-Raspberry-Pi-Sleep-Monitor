@@ -12,7 +12,7 @@ def open_curtain():
 
     servo.angle = 0
 
-    time.sleep(1)
+    time.sleep(0.2)
 
     servo.value = None
 
@@ -20,6 +20,6 @@ def close_curtain():
 
     servo.angle = 90
 
-    time.sleep(1)
+    time.sleep(0.2)
 
     servo.value = None
